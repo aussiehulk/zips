@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addons>
+<addon id="context.thor" version="1.0.1" name="Thor - Global Context Menu Items" provider-name="Thor">
+	<requires>
+		<import addon="xbmc.python" version="2.23.0" />
+	</requires>
+	<extension point="kodi.context.item">
+		<menu id="kodi.core.main">
+			<item library="traktManager.py">
+				<label>[B][COLOR red]Thor[/COLOR][/B] - Trakt Manager</label>
+				<visible>
+					String.StartsWith(ListItem.path,plugin://plugin.video.thor/) + String.IsEqual(ListItem.Property(isThor_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,season) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+
+			<item library="rescrape.py">
+				<label>[B][COLOR red]Thor[/COLOR][/B] - Rescrape Item</label>
+				<visible>
+					String.StartsWith(ListItem.path,plugin://plugin.video.thor/) + String.IsEqual(ListItem.Property(isThor_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+
+			<item library="clearProviders.py">
+				<label>[B][COLOR red]Thor[/COLOR][/B] - Clear Providers</label>
+				<visible>
+					String.StartsWith(ListItem.path,plugin://plugin.video.thor/) + String.IsEqual(ListItem.Property(isThor_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+
+<!-- 			<item library="autoPlay.py">
+				<label>[B][COLOR red]Thor[/COLOR][/B] - Auto Play</label>
+				<visible>
+					String.StartsWith(ListItem.path,plugin://plugin.video.thor/) + String.IsEqual(ListItem.Property(isThor_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item> -->
+
+<!-- 			<item library="sourceSelect.py">
+				<label>[B][COLOR red]Thor[/COLOR][/B] - Source Select</label>
+				<visible>
+					String.StartsWith(ListItem.path,plugin://plugin.video.thor/) + String.IsEqual(ListItem.Property(isThor_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item> -->
+
+			<item library="findSimilar.py">
+				<label>[B][COLOR red]Thor[/COLOR][/B] - Find Similar</label>
+				<visible>
+					String.StartsWith(ListItem.path,plugin://plugin.video.thor/) + String.IsEqual(ListItem.Property(isThor_widget),true) +
+					[String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+
+			<item library="browseSeries.py">
+				<label>[B][COLOR red]Thor[/COLOR][/B] - Browse Series</label>
+				<visible>
+					String.StartsWith(ListItem.path,plugin://plugin.video.thor/) + String.IsEqual(ListItem.Property(isThor_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow)]
+				</visible>
+			</item>
+
+			<item library="browseEpisodes.py">
+				<label>[B][COLOR red]Thor[/COLOR][/B] - Browse Episodes</label>
+				<visible>
+					String.StartsWith(ListItem.path,plugin://plugin.video.thor/) + String.IsEqual(ListItem.Property(isThor_widget),true) +
+					String.IsEqual(ListItem.dbtype,episode)
+				</visible>
+			</item> -->
+
+		</menu>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Thor - This Addon is currently in beta. Please be aware there may be bugs present</summary>
+		<description lang="en">Adds Global Contextual Menu Items for Thor menu items throughout Kodi
+		</description>
+		<platform>all</platform>
+		<license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+		<forum></forum>
+		<website></website>
+		<source></source>
+		<disclaimer lang="en"></disclaimer>
+		<assets>
+			<icon>icon.png</icon>
+			<fanart>fanart.png</fanart>
+		</assets>
+		<news>
+		</news>
+	</extension>
+</addon>
+
+<addon id="plugin.video.thor" version="2.3.1" name="[B][COLOR red]Thor[/COLOR][/B]" provider-name="Mr. Thor">
+   <requires>
+        <import addon="xbmc.python" version="2.19.0" />
+        <import addon="script.thor.artwork" />
+        <import addon="script.thor.metadata" />
+        <import addon="script.module.resolveurl" />
+        <import addon="script.module.requests" />
+        <import addon="script.module.metahandler" />
+        <import addon="plugin.video.youtube"/>
+        <import addon="script.module.inputstreamhelper" />
+		<import addon="script.module.requests" />
+		<import addon="script.module.python.koding.aio" version="0.9.6.6" />
+		<import addon="script.module.beautifulsoup"/>
+		<import addon="script.module.beautifulsoup4"/>
+		<import addon="script.module.futures"/>
+		<import addon="script.module.pyxbmct" />
+		<import addon="script.video.F4mProxy"/>
+		<import addon="plugin.video.f4mTester" />
+		<import addon="script.module.openscrapers"/>
+		<import addon="script.module.addon.signals" version="0.0.1"/>
+		<import addon="context.thor" version="1.0.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="thor.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.repository" name="Hulks Repo">
+        <dir>
+            <info compressed="false">https://aussiehulk1.000webhostapp.com/_repo/addons.xml</info>
+            <checksum>https://aussiehulk1.000webhostapp.com/_repo/addons.xml.md5</checksum>
+            <datadir zip="true">https://aussiehulk1.000webhostapp.com/_repo</datadir>
+        </dir>
+	</extension>
+    <extension point="xbmc.service" library="service.py" start="startup" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">[B][COLOR red]Thor[/COLOR] Video[/B] is a free portal to see the best stuff.</summary>
+        <description lang="en">This addon does not form part of the Kodi Media Centre. Please do not seek assistance with this addon from any of the Official Kodi Support Channels.The author does not host any of the content in this addon and takes no responsibility for content found.</description>
+        <disclaimer lang="en">The author is not responsible for the use of this addon. The author is not responsible for the content found using this addon. The author does not host or own any content found within this addon. The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation. This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works</disclaimer>
+    <platform>all</platform>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+    <assets>
+        <icon>icon.png</icon>
+        <fanart>fanart.jpg</fanart>
+        <screenshot>resources/screenshots/1.png</screenshot>
+        <screenshot>resources/screenshots/2.png</screenshot>
+        <screenshot>resources/screenshots/3.png</screenshot>
+    </assets>
+    <news></news>
+    </extension>
+</addon>
+
+    <addon id="repository.hulk" name="Hulks Repo" version="2.3.1" provider-name="Aussiehulk">
+    <extension point="xbmc.addon.repository" name="Hulks Repo">
+		<dir>
+			<info compressed="false">https://raw.githubusercontent.com/Gujal00/smrzips/master/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/Gujal00/smrzips/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/Gujal00/smrzips/master/zips/</datadir>
+		</dir>
+		<dir>
+			<info compressed="false">https://raw.githubusercontent.com/jsergio123/zips/master/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/jsergio123/zips/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/jsergio123/zips/master/</datadir>
+		</dir>
+		<dir>
+			<info compressed="false">https://raw.githubusercontent.com/a4k-openproject/repository.openscrapers/master/zips/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/a4k-openproject/repository.openscrapers/master/zips/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/a4k-openproject/repository.openscrapers/master/zips/</datadir>
+		</dir>
+		<dir>
+			<info compressed="false">https://raw.githubusercontent.com/marcelveldt/repository.marcelveldt/master/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/marcelveldt/repository.marcelveldt/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/marcelveldt/repository.marcelveldt/master/</datadir>
+		</dir>
+		<dir>
+			<info compressed="false">https://raw.githubusercontent.com/aussiehulk/zips/master/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/aussiehulk/zips/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/aussiehulk/zips/master/</datadir>
+		</dir>
+	</extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Hulks Repo</summary>
+        <description>This is Hulks Repo</description>
+        <disclaimer></disclaimer>
+        <platform>all</platform>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+    </extension>
+</addon>
+
+<addon id="script.thor.artwork" version="2.3.1" name="[B][COLOR red]Thor[/COLOR] Artwork[/B]" provider-name="Thor">
+    <requires>
+        <import addon="xbmc.python" version="2.25.0"/>
+    </requires>
+    <extension point="xbmc.addon.repository" name="Hulks Repo">
+        <dir>
+            <info compressed="false">https://aussiehulk1.000webhostapp.com/_repo/addons.xml</info>
+            <checksum>https://aussiehulk1.000webhostapp.com/_repo/addons.xml.md5</checksum>
+            <datadir zip="true">https://aussiehulk1.000webhostapp.com/_repo</datadir>
+        </dir>
+	</extension>
+    <extension point="xbmc.python.module" library="lib" />
+    <extension point="xbmc.addon.metadata">
+    <summary lang="en">[B][COLOR red]Thor[/COLOR] Artwork[/B] is a free portal to see the best stuff.</summary>
+    <description lang="en">This addon does not form part of the Kodi Media Centre. Please do not seek assistance with this addon from any of the Official Kodi Support Channels.The author does not host any of the content in this addon and takes no responsibility for content found.</description>
+    <disclaimer lang="en">The author is not responsible for the use of this addon. The author is not responsible for the content found using this addon. The author does not host or own any content found within this addon. The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation. This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works</disclaimer>
+    <platform>all</platform>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+    <assets>
+        <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        <screenshot></screenshot>
+        <screenshot></screenshot>
+        <screenshot></screenshot>
+    </assets>
+    <news></news>
+    </extension>
+</addon>
+
+<addon id="script.thor.metadata" version="2.3.1" name="[B][COLOR red]Thor[/COLOR] Metadata[/B]" provider-name="nobody">
+    <requires>
+        <import addon="xbmc.python" version="2.19.0"/>
+    </requires>
+    <extension point="xbmc.addon.repository" name="Hulks Repo">
+        <dir>
+            <info compressed="false">https://aussiehulk1.000webhostapp.com/_repo/addons.xml</info>
+            <checksum>https://aussiehulk1.000webhostapp.com/_repo/addons.xml.md5</checksum>
+            <datadir zip="true">https://aussiehulk1.000webhostapp.com/_repo</datadir>
+        </dir>
+	</extension>
+    <extension point="xbmc.python.module" library="lib" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">[B][COLOR red]Thor[/COLOR] Metadata[/B] is a free portal to see the best stuff.</summary>
+    <description lang="en">This addon does not form part of the Kodi Media Centre. Please do not seek assistance with this addon from any of the Official Kodi Support Channels.The author does not host any of the content in this addon and takes no responsibility for content found.</description>
+    <disclaimer lang="en">The author is not responsible for the use of this addon. The author is not responsible for the content found using this addon. The author does not host or own any content found within this addon. The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation. This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works</disclaimer>
+    <platform>all</platform>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+    <assets>
+        <icon>icon.png</icon>
+        <fanart></fanart>
+        <screenshot></screenshot>
+        <screenshot></screenshot>
+        <screenshot></screenshot>
+    </assets>
+    <news></news>
+    </extension>
+</addon>
+</addons>
