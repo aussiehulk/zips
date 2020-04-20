@@ -91,7 +91,7 @@
 	</extension>
 </addon>
 
-<addon id="plugin.video.thor" version="2.3.1" name="[B][COLOR red]Thor[/COLOR][/B]" provider-name="Mr. Thor">
+<addon id="plugin.video.thor" version="2.3.2" name="[B][COLOR red]Thor[/COLOR][/B]" provider-name="Mr. Thor">
    <requires>
         <import addon="xbmc.python" version="2.19.0" />
         <import addon="script.thor.artwork" />
@@ -110,6 +110,7 @@
 		<import addon="script.video.F4mProxy"/>
 		<import addon="plugin.video.f4mTester" />
 		<import addon="script.module.openscrapers"/>
+        <import addon="script.module.barnaclescrapers" />
 		<import addon="script.module.addon.signals" version="0.0.1"/>
 		<import addon="context.thor" version="1.0.0"/>
     </requires>
