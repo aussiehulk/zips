@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addons>
-<addon id="context.thor" version="1.0.1" name="Thor - Global Context Menu Items" provider-name="Thor">
+<addon id="context.thor" version="1.0.2" name="Thor - Global Context Menu Items" provider-name="Thor">
 	<requires>
 		<import addon="xbmc.python" version="2.23.0" />
 	</requires>
@@ -72,6 +72,13 @@
 
 		</menu>
 	</extension>
+    <extension point="xbmc.addon.repository" name="Hulks Repo">
+		<dir>
+			<info compressed="false">https://raw.githubusercontent.com/aussiehulk/zips/master/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/aussiehulk/zips/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/aussiehulk/zips/master/</datadir>
+		</dir>
+	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary lang="en">Thor - This Addon is currently in beta. Please be aware there may be bugs present</summary>
 		<description lang="en">Adds Global Contextual Menu Items for Thor menu items throughout Kodi
@@ -91,7 +98,68 @@
 	</extension>
 </addon>
 
-<addon id="plugin.video.thor" version="2.3.2" name="[B][COLOR red]Thor[/COLOR][/B]" provider-name="Mr. Thor">
+<addon id="plugin.program.hulkswizard" name="[COLOR white]The Hulks Wizard[/COLOR]" version="2.2" provider-name="[COLOR red]@aussiehulk[/COLOR]">
+   <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>executable</provides>
+	</extension>
+	<extension point="xbmc.addon.repository" name="Hulks Repo">
+		<dir>
+			<info compressed="false">https://raw.githubusercontent.com/aussiehulk/zips/master/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/aussiehulk/zips/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/aussiehulk/zips/master/</datadir>
+		</dir>
+	</extension>
+	<extension point="xbmc.service" library="startup.py" start="startup" />
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Hulks Wizard</summary>
+		<description lang="en">In this wizard you will find the latest Hulks Wizard, Other Wizards and Tools. </description>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="plugin.video.ironman" name="Ironman" version="1.7" provider-name="Ironman">
+    <requires>
+        <import addon="xbmc.python" version="2.19.0" />
+        <import addon="script.module.universalscrapers" version="1.0.0" />
+        <import addon="script.module.python.koding.aio" version="0.9.6.6" />
+        <import addon="script.module.beautifulsoup" version="3.2.1" />
+        <import addon="script.module.requests" version="2.9.1" />
+        <import addon="script.module.addon.common" version="2.0.0" />
+        <import addon="script.module.xmltodict" version="0.9.0" />
+        <!--<import addon="script.module.web-pdb" version="1.0"/>-->
+        <import addon="script.module.resolveurl" />
+        <!--<import addon="script.module.urlresolver" />-->
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>audio video</provides>
+    </extension>
+    <extension point="xbmc.addon.repository" name="Hulks Repo">
+		<dir>
+			<info compressed="false">https://raw.githubusercontent.com/aussiehulk/zips/master/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/aussiehulk/zips/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/aussiehulk/zips/master/</datadir>
+		</dir>
+	</extension>
+    <extension point="xbmc.service" library="service.py" start="[login|startup]" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Bob's little sister</summary>
+        <description lang="en">As of May, 2018 this is a community maintained template for learning purposes.</description>
+        <disclaimer lang="en">The author is not responsible for the use of this addon. The author is not responsible for the content found using this addon. The author does not host or own any content found within this addon.[CR]The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.[CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.</disclaimer>
+        <platform>all</platform>
+        <website/>
+        <video_guide>https://youtu.be/0kFhoWahtFw</video_guide>
+        <reuselanguageinvoker>false</reuselanguageinvoker>
+		<assets>
+			<icon>icon.jpg</icon>
+			<fanart>fanart.png</fanart>
+		</assets>
+    </extension>
+</addon>
+
+<addon id="plugin.video.thor" version="2.3.3" name="[B][COLOR red]Thor[/COLOR][/B]" provider-name="Mr. Thor">
    <requires>
         <import addon="xbmc.python" version="2.19.0" />
         <import addon="script.thor.artwork" />
@@ -118,11 +186,11 @@
         <provides>video</provides>
     </extension>
     <extension point="xbmc.addon.repository" name="Hulks Repo">
-        <dir>
-            <info compressed="false">https://aussiehulk1.000webhostapp.com/_repo/addons.xml</info>
-            <checksum>https://aussiehulk1.000webhostapp.com/_repo/addons.xml.md5</checksum>
-            <datadir zip="true">https://aussiehulk1.000webhostapp.com/_repo</datadir>
-        </dir>
+		<dir>
+			<info compressed="false">https://raw.githubusercontent.com/aussiehulk/zips/master/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/aussiehulk/zips/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/aussiehulk/zips/master/</datadir>
+		</dir>
 	</extension>
     <extension point="xbmc.service" library="service.py" start="startup" />
     <extension point="xbmc.addon.metadata">
@@ -142,17 +210,33 @@
     </extension>
 </addon>
 
-    <addon id="repository.hulk" name="Hulks Repo" version="2.3.1" provider-name="Aussiehulk">
+    <addon id="repository.hulk" name="Hulks Repo" version="2.3.3" provider-name="Aussiehulk">
     <extension point="xbmc.addon.repository" name="Hulks Repo">
+        <dir>
+            <info compressed="false">https://raw.githubusercontent.com/jenaddon/repository.jenrepo/master/zips/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/jenaddon/repository.jenrepo/master/zips/addons.xml.md5</checksum>
+            <datadir zip="true">https://raw.githubusercontent.com/jenaddon/repository.jenrepo/master/zips/</datadir>
+            <hashes>false</hashes>
+        </dir>
+        <dir>
+            <info compressed="false">https://raw.githubusercontent.com/teamuniversal/scrapers/master/_modules4all/zips/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/teamuniversal/scrapers/master/_modules4all/zips/addons.xml.md5</checksum>
+            <datadir zip="true">https://raw.githubusercontent.com/teamuniversal/scrapers/master/_modules4all/zips/</datadir>
+        </dir>
+        <dir>
+            <info compressed="false">https://raw.githubusercontent.com/jsergio123/zips/master/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/jsergio123/zips/master/addons.xml.md5</checksum>
+            <datadir zip="true">https://raw.githubusercontent.com/jsergio123/zips/master/</datadir>
+        </dir>
+        <dir>
+            <info compressed="false">https://raw.githubusercontent.com/totalrevolution/python-koding/master/zips/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/totalrevolution/python-koding/master/zips/addons.xml.md5</checksum>
+            <datadir zip="true">https://raw.githubusercontent.com/totalrevolution/python-koding/master/zips/</datadir>
+        </dir>
 		<dir>
 			<info compressed="false">https://raw.githubusercontent.com/Gujal00/smrzips/master/addons.xml</info>
 			<checksum>https://raw.githubusercontent.com/Gujal00/smrzips/master/addons.xml.md5</checksum>
 			<datadir zip="true">https://raw.githubusercontent.com/Gujal00/smrzips/master/zips/</datadir>
-		</dir>
-		<dir>
-			<info compressed="false">https://raw.githubusercontent.com/jsergio123/zips/master/addons.xml</info>
-			<checksum>https://raw.githubusercontent.com/jsergio123/zips/master/addons.xml.md5</checksum>
-			<datadir zip="true">https://raw.githubusercontent.com/jsergio123/zips/master/</datadir>
 		</dir>
 		<dir>
 			<info compressed="false">https://raw.githubusercontent.com/a4k-openproject/repository.openscrapers/master/zips/addons.xml</info>
@@ -182,16 +266,16 @@
     </extension>
 </addon>
 
-<addon id="script.thor.artwork" version="2.3.1" name="[B][COLOR red]Thor[/COLOR] Artwork[/B]" provider-name="Thor">
+<addon id="script.thor.artwork" version="2.3.3" name="[B][COLOR red]Thor[/COLOR] Artwork[/B]" provider-name="Thor">
     <requires>
         <import addon="xbmc.python" version="2.25.0"/>
     </requires>
     <extension point="xbmc.addon.repository" name="Hulks Repo">
-        <dir>
-            <info compressed="false">https://aussiehulk1.000webhostapp.com/_repo/addons.xml</info>
-            <checksum>https://aussiehulk1.000webhostapp.com/_repo/addons.xml.md5</checksum>
-            <datadir zip="true">https://aussiehulk1.000webhostapp.com/_repo</datadir>
-        </dir>
+		<dir>
+			<info compressed="false">https://raw.githubusercontent.com/aussiehulk/zips/master/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/aussiehulk/zips/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/aussiehulk/zips/master/</datadir>
+		</dir>
 	</extension>
     <extension point="xbmc.python.module" library="lib" />
     <extension point="xbmc.addon.metadata">
@@ -211,16 +295,16 @@
     </extension>
 </addon>
 
-<addon id="script.thor.metadata" version="2.3.1" name="[B][COLOR red]Thor[/COLOR] Metadata[/B]" provider-name="nobody">
+<addon id="script.thor.metadata" version="2.3.3" name="[B][COLOR red]Thor[/COLOR] Metadata[/B]" provider-name="nobody">
     <requires>
         <import addon="xbmc.python" version="2.19.0"/>
     </requires>
     <extension point="xbmc.addon.repository" name="Hulks Repo">
-        <dir>
-            <info compressed="false">https://aussiehulk1.000webhostapp.com/_repo/addons.xml</info>
-            <checksum>https://aussiehulk1.000webhostapp.com/_repo/addons.xml.md5</checksum>
-            <datadir zip="true">https://aussiehulk1.000webhostapp.com/_repo</datadir>
-        </dir>
+		<dir>
+			<info compressed="false">https://raw.githubusercontent.com/aussiehulk/zips/master/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/aussiehulk/zips/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/aussiehulk/zips/master/</datadir>
+		</dir>
 	</extension>
     <extension point="xbmc.python.module" library="lib" />
     <extension point="xbmc.addon.metadata">
