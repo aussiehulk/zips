@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addons>
-<addon id="context.thor" version="1.0.9" name="Thor - Global Context Menu Items" provider-name="Thor">
+<addon id="context.thor" version="1.1.1" name="Thor - Global Context Menu Items" provider-name="Thor">
 	<requires>
-		<import addon="xbmc.python" version="2.23.0" />
 		<import addon="script.module.requests" version="2.19.1" />
 	</requires>
 	<extension point="kodi.context.item">
@@ -209,27 +208,20 @@
     </extension>
 </addon>
 
-<addon id="plugin.video.thor" name="[COLOR red]Thor[/COLOR]" provider-name="Thor" version="2.5.1">
+<addon id="plugin.video.thor" name="[COLOR red]Thor[/COLOR]" provider-name="Thor" version="2.5.5">
 	<requires>
-		<import addon="xbmc.python" version="2.19.0" />
 		<import addon="context.thor"  />
 		<import addon="script.module.myaccounts" />
-		<import addon="script.module.fenomscrapers"  />
-		<import addon="script.module.requests"  />
+		<import addon="script.module.fenomscrapers" />
+		<import addon="script.module.six" />
+		<import addon="script.module.requests" />
 		<import addon="script.module.beautifulsoup4" />
-		<import addon="script.module.metahandler"  />
-		<import addon="plugin.video.youtube"  />
-		<import addon="script.module.addon.signals"  />
+		<import addon="script.module.metahandler" />
+		<import addon="plugin.video.youtube" />
+		<import addon="script.module.addon.signals" />
 		<import addon="script.module.openscrapers"/>
         <import addon="script.module.barnaclescrapers" />
         <import addon="script.module.resolveurl" />
-		<import addon="script.module.python.koding.aio"  />
-		<import addon="script.module.beautifulsoup"/>
-		<import addon="script.module.futures"/>
-		<import addon="script.module.pyxbmct" />
-		<import addon="script.video.F4mProxy"/>
-		<import addon="plugin.video.f4mTester" />
-        <import addon="script.module.inputstreamhelper" />
 	</requires>
 	<extension library="thor.py" point="xbmc.python.pluginsource">
 		<provides>video</provides>
@@ -264,7 +256,7 @@
 	</extension>
 </addon>
 
-    <addon id="repository.hulk" name="Hulks Repo" version="2.5.1" provider-name="Aussiehulk">
+    <addon id="repository.hulk" name="Hulks Repo" version="2.5.5" provider-name="Aussiehulk">
     <extension point="xbmc.addon.repository" name="Hulks Repo">
         <dir>
             <info compressed="false">https://raw.githubusercontent.com/jenaddon/repository.jenrepo/master/zips/addons.xml</info>
