@@ -341,14 +341,14 @@ v0.1.0.7
 		</dir>
 
 		<dir minversion="18.0" maxversion="18.9.0">
-			<info compressed="false">https://raw.githubusercontent.com/aussiehulk/repository.metahandler/leia/zips/addons.xml</info>
-			<checksum>https://raw.githubusercontent.com/aussiehulk/repository.metahandler/leia/zips/addons.xml.md5</checksum>
-			<datadir zip="true">https://raw.githubusercontent.com/aussiehulk/repository.metahandler/leia/zips/</datadir>
+			<info compressed="false">https://raw.githubusercontent.com/aussiehulk/repository.metahandler/main/leia/zips/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/aussiehulk/repository.metahandler/main/leia/zips/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/aussiehulk/repository.metahandler/main/leia/zips/</datadir>
 		</dir>
 		<dir minversion="18.9.0">
-			<info compressed="false">https://raw.githubusercontent.com/aussiehulk/repository.metahandler/matrix/zips/addons.xml</info>
-			<checksum>https://raw.githubusercontent.com/aussiehulk/repository.metahandler/matrix/zips/addons.xml.md5</checksum>
-			<datadir zip="true">https://raw.githubusercontent.com/aussiehulk/repository.metahandler/matrix/zips/</datadir>
+			<info compressed="false">https://raw.githubusercontent.com/aussiehulk/repository.metahandler/main/matrix/zips/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/aussiehulk/repository.metahandler/main/matrix/zips/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/aussiehulk/repository.metahandler/main/matrix/zips/</datadir>
 		</dir>
 
 		<dir>
