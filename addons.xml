@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addons>
-<addon id="context.thor" version="1.1.1" name="Thor - Global Context Menu Items" provider-name="Thor">
+<addon id="context.thor" name="Thor - Global Context Menu Items" provider-name="Thor" version="1.1.9">
 	<requires>
 		<import addon="script.module.requests" version="2.19.1" />
 	</requires>
@@ -26,10 +26,13 @@
 			<item library="clearProviders.py">
 				<label>[B][COLOR red]Thor[/COLOR][/B] - Clear Providers</label>
 				<visible>
-					!String.IsEmpty(Window(home).Property(context.thor.clearProviders)) +
+					[!String.IsEmpty(Window(home).Property(context.thor.clearProviders)) +
 					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.thor/?action=play) +
 					String.IsEqual(ListItem.Property(isThor_widget),true) +
-					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]] |
+					[String.Contains(Container.FolderPath,videodb://) +
+					[String.Contains(Container.ListItem.Path,Window(home).Property(thor.movieLib.path)) | String.Contains(Container.ListItem.Path,Window(home).Property(thor.tvLib.path))] +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]]
 				</visible>
 			</item>
 			<item library="clearBookmark.py">
@@ -38,23 +41,25 @@
 					!String.IsEmpty(Window(home).Property(context.thor.clearBookmark)) +
 					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.thor/?action=play) +
 					String.IsEqual(ListItem.Property(isThor_widget),true) +
-<!-- 					!String.IsEqual(ListItem.Property(resumetime),0) + -->
-					!String.IsEqual(ListItem.Property(thor_resumetime),0) +
+					ListItem.IsResumable +
 					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
 				</visible>
 			</item>
 			<item library="rescrape.py">
 				<label>[B][COLOR red]Thor[/COLOR][/B] - Rescrape Item</label>
 				<visible>
-					!String.IsEmpty(Window(home).Property(context.thor.rescrape)) +
+					[!String.IsEmpty(Window(home).Property(context.thor.rescrape)) +
 					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.thor/?action=play) +
 					String.IsEqual(ListItem.Property(isThor_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]]
+				</visible>
+			</item>
+			<item library="libRescrape.py">
+				<label>[B][COLOR red]Thor[/COLOR][/B] - Rescrape Lib Item</label>
+				<visible>
+					String.Contains(Container.FolderPath,videodb://) +
+					[String.Contains(Container.ListItem.Path,Window(home).Property(thor.movieLib.path)) | String.Contains(Container.ListItem.Path,Window(home).Property(thor.tvLib.path))] +
 					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
-
-<!-- Future for Library CM to Rescrape -->
-<!-- 					!String.IsEmpty(Window(home).Property(context.thor.rescrape)) +
-					[String.Contains(ListItem.Path,plugin.video.thor) + String.IsEqual(ListItem.FileExtension,strm) | String.StartsWith(ListItem.FolderPath,plugin://plugin.video.thor/?action=play)] +
-					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)] -->
 				</visible>
 			</item>
 			<item library="playFromHere.py">
@@ -69,7 +74,7 @@
 			<item library="autoPlay.py">
 				<label>[B][COLOR red]Thor[/COLOR][/B] - Auto Play</label>
 				<visible>
-					String.IsEmpty(Window(home).Property(plugin.video.thor.autoPlay)) +
+					String.IsEmpty(Window(home).Property(thor.autoPlay.enabled)) +
 					!String.IsEmpty(Window(home).Property(context.thor.autoPlay)) +
 					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.thor/?action=play) +
 					String.IsEqual(ListItem.Property(isThor_widget),true) +
@@ -79,7 +84,7 @@
 			<item library="sourceSelect.py">
 				<label>[B][COLOR red]Thor[/COLOR][/B] - Source Select</label>
 				<visible>
-					!String.IsEmpty(Window(home).Property(plugin.video.thor.autoPlay)) +
+					!String.IsEmpty(Window(home).Property(thor.autoPlay.enabled)) +
 					!String.IsEmpty(Window(home).Property(context.thor.sourceSelect)) +
 					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.thor/?action=play) +
 					String.IsEqual(ListItem.Property(isThor_widget),true) +
@@ -111,31 +116,28 @@
 					String.StartsWith(ListItem.path,plugin://plugin.video.thor/) +
 					String.IsEqual(ListItem.Property(isThor_widget),true) +
 					String.IsEqual(ListItem.dbtype,episode)
-<!-- 					[String.IsEqual(ListItem.dbtype,episode) | !String.IsEmpty(ListItem.Property(multi_episodes))] -->
 				</visible>
 			</item>
 		</menu>
-</extension>
+	</extension>
 	<extension point="xbmc.service" library="service.py" />
 	<extension point="xbmc.addon.metadata">
 		<summary lang="en">Thor - This Addon is currently in beta. Please be aware there may be bugs present</summary>
-		<description lang="en">Adds Global Contextual Menu Items for Thor menu items throughout Kodi
-		</description>
+		<description lang="en">Adds Global Contextual Menu Items for Thor menu items throughout Kodi</description>
 		<platform>all</platform>
 		<license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
 		<forum></forum>
-		<website></website>
-		<source></source>
+		<website>https://github.com/aussiehulk/context.thor</website>
+		<source>https://github.com/aussiehulk/context.thor</source>
 		<disclaimer lang="en"></disclaimer>
 		<assets>
 			<icon>icon.png</icon>
-			<fanart>fanart.png</fanart>
+			<fanart>fanart.jpg</fanart>
+			<screenshot></screenshot>
 		</assets>
 		<news>
-[B][COLOR red]Update - v1.0.9 - Oct. 05, 2020[/COLOR][/B]
-[COLOR yellow]--[/COLOR][I] Fixed Trakt Manager not opening.[/I]
-[COLOR yellow]--[/COLOR][I] Fixed Context Settings not opening.[/I]
-[COLOR yellow]--[/COLOR][I] Fixed service update check.[/I]
+[B][COLOR red]Update - v1.1.9 - June 12, 2021[/COLOR][/B]
+[COLOR yellow]--[/COLOR][I] "Trakt Manager" updated for changed to Thor addon.[/I]
 		</news>
 	</extension>
 </addon>
@@ -208,20 +210,16 @@
     </extension>
 </addon>
 
-<addon id="plugin.video.thor" name="[COLOR red]Thor[/COLOR]" provider-name="Thor" version="2.5.5">
+<addon id="plugin.video.thor" name="[COLOR red]Thor[/COLOR]" provider-name="Thor" version="3.1.1">
 	<requires>
-		<import addon="context.thor"  />
+		<import addon="context.thor" />
 		<import addon="script.module.myaccounts" />
 		<import addon="script.module.fenomscrapers" />
-		<import addon="script.module.six" />
 		<import addon="script.module.requests" />
 		<import addon="script.module.beautifulsoup4" />
-		<import addon="script.module.metahandler" />
-		<import addon="plugin.video.youtube" />
-		<import addon="script.module.addon.signals" />
-		<import addon="script.module.openscrapers"/>
-        <import addon="script.module.barnaclescrapers" />
-        <import addon="script.module.resolveurl" />
+		<import addon="script.module.metahandler" optional="true" />
+		<import addon="plugin.video.youtube" optional="true" />
+		<import addon="script.module.addon.signals" optional="true" />
 	</requires>
 	<extension library="thor.py" point="xbmc.python.pluginsource">
 		<provides>video</provides>
@@ -235,9 +233,9 @@
 		<platform>all</platform>
 		<license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
 		<forum />
-		<website>https://github.com/aussiehulk/zips/tree/master/plugin.video.thor</website>
-		<source>https://github.com/aussiehulk/zips/tree/master/plugin.video.thor</source>
-		<disclaimer lang="en">The author of this addon do not host any of the content which is found and have no affiliation with any of the content providers. This addon simply searches websites for content. Use at your own risk!</disclaimer>
+		<website>https://github.com/aussiehulk/plugin.video.thor</website>
+		<source>https://github.com/aussiehulk/plugin.video.thor</source>
+		<disclaimer lang="en">The author of this addon does not host any of the content which is found and have no affiliation with any of the content providers. This addon simply searches websites for content. Use at your own risk!</disclaimer>
 		<assets>
 			<icon>icon.png</icon>
 			<fanart>fanart.jpg</fanart>
@@ -246,12 +244,15 @@
 			<screenshot>resources/screenshots/screenshot003.jpg</screenshot>
 		</assets>
 		<news>
-[B][COLOR red]Update - v4.3.4 - Jan. 04, 2021[/COLOR][/B]
-[COLOR yellow]--[/COLOR][I] Removed setting option "Remove Captcha".  Since switching
-    to debrid only support this option is no longer needed.[/I]
-[COLOR yellow]--[/COLOR][I] Allot of cleanup has been done to the Sources module
-    for removed options. Scraping and source select is now faster.[/I]
-[COLOR yellow]--[/COLOR][I] Fixed Library Update Service exit typo.[/I]
+[B][COLOR red]Update - v3.1.1 - June 22, 2021[/COLOR][/B]
+[COLOR yellow]--[/COLOR][I] Added new setting to "Sources Options" called "Terminate on Cloud Sources".  Now if cloud
+    sources are found you can force the scrape process to terminate.[/I]
+[COLOR yellow]--[/COLOR][I] Resume dialog now utilizes the Kodi Matrix/19 new "yesnocustom" dialog.  Matrix users can
+    now chose from "Start from Beginning", "Resume" or "Cancel Playback". Leia users
+    can only see the first two options[/I]
+[COLOR yellow]--[/COLOR][I] Cloud Scrapers have now been added for AD, PM, and RD. See Account Settings to
+    "Enable cloud scraper" for each of the three.[/I]
+[COLOR yellow]--[/COLOR][I] Dutch language .po file update.[/I]
 		</news>
 	</extension>
 </addon>
