@@ -1,0 +1,15 @@
+[2018.12.18]
+- Rebrand Zen to thor
+
+[2018.06.20]
+- Rebrand Zen to kratos
+
+[2017.06.08]
+- Rebrand Zen to Elysium
+
+[1.0.0]
+Initial Release
+Forked from MuckyDuck Modules
+
+[1.4.0]
+- Tweak net modules and requests
