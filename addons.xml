@@ -213,11 +213,11 @@ v0.1.0.7
 <addon id="plugin.video.ironman" name=" [B][COLOR red]Ironman[/COLOR][/B]" version="2.1" provider-name="Mr Hulk">
     <requires>
         <import addon="xbmc.python" version="2.19.0" />
-        <import addon="script.module.universalscrapers" version="1.0.0" />
-        <import addon="script.module.python.koding.aio" version="0.9.6.6" />
-        <import addon="script.module.beautifulsoup" version="3.2.1" />
-        <import addon="script.module.requests" version="2.9.1" />
-        <import addon="script.module.addon.common" version="2.0.0" />
+        <import addon="script.module.universalscrapers"  />
+        <import addon="script.module.python.koding.aio.alt"  />
+        <import addon="script.module.beautifulsoup"  />
+        <import addon="script.module.requests"  />
+        <import addon="script.module.addon.common"  />
         <import addon="script.module.xmltodict" version="0.9.0" />
 		<import addon="script.module.feedparser" />
         <!--<import addon="script.module.web-pdb" version="1.0"/>-->
@@ -364,7 +364,7 @@ v0.1.0.7
   </extension>
 </addon>
 
-<addon id="plugin.video.thor" name="[COLOR red]Thor[/COLOR]" provider-name="Thor" version="3.1.1">
+<addon id="plugin.video.thor" name="[COLOR red]Thor[/COLOR]" provider-name="Thor" version="3.1.2">
 	<requires>
 		<import addon="context.thor" />
 		<import addon="script.module.myaccounts" />
@@ -398,7 +398,8 @@ v0.1.0.7
 			<screenshot>resources/screenshots/screenshot003.jpg</screenshot>
 		</assets>
 		<news>
-[B][COLOR red]Update - v3.1.1 - June 22, 2021[/COLOR][/B]
+[B][COLOR red]Update - v3.1.2 - June 22, 2021[/COLOR][/B]
+[COLOR yellow]--[/COLOR][I] Fixed Cashe functions. [/I]
 [COLOR yellow]--[/COLOR][I] Added new setting to "Sources Options" called "Terminate on Cloud Sources".  Now if cloud
     sources are found you can force the scrape process to terminate.[/I]
 [COLOR yellow]--[/COLOR][I] Resume dialog now utilizes the Kodi Matrix/19 new "yesnocustom" dialog.  Matrix users can
@@ -624,6 +625,46 @@ v0.1.0.7
     </extension>
 </addon>
 
+<addon id="script.module.iso3166" name="ISO 3166 Library" version="0.9" provider-name="back-to">
+  <requires>
+    <import addon="xbmc.python" version="2.24.0"/>
+  </requires>
+  <extension point="xbmc.python.module" library="resources/lib/"/>
+  <extension point="xbmc.addon.metadata">
+    <summary>ISO 3166 Library</summary>
+    <description>ISO 3166 repacked for Kodi</description>
+    <platform>all</platform>
+    <license>MIT</license>
+    <source>https://github.com/deactivated/python-iso3166</source>
+    <website>https://github.com/back-to/script.module.iso3166</website>
+    <news>
+    0.9
+    - New entry for Kosovo (XK / XKX)
+    - Swaziland changed to Eswatini (effective 2018-07-16)
+    - "United States" -> "United States of America"
+    </news>
+  </extension>
+</addon>
+
+<addon id="script.module.iso639" name="ISO639 Library" version="0.4.5.1" provider-name="back-to">
+  <requires>
+    <import addon="xbmc.python" version="2.24.0"/>
+  </requires>
+  <extension point="xbmc.python.module" library="resources/lib/"/>
+  <extension point="xbmc.addon.metadata">
+    <summary>ISO639 Library</summary>
+    <description>ISO639 repacked for Kodi</description>
+    <platform>all</platform>
+    <license>GNU AGPL</license>
+    <source>https://github.com/noumar/iso639</source>
+    <website>https://github.com/back-to/script.module.iso639</website>
+    <news>
+    0.4.5.1
+    - Fixed paths for Android devices.
+    </news>
+  </extension>
+</addon>
+
 <addon id="script.module.liveresolver"
      name="LiveResolver"
      version="0.1.50"
@@ -724,30 +765,27 @@ v0.1.0.7
     </extension>
 </addon>
 
-<addon id="script.module.python.koding.aio"
-   name="Python Koding AIO"
-   version="2.1"
-   provider-name="Total Revolution, Bugatsinho">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-    <import addon="script.module.resolveurl" version="5.0.45"/>
-    <import addon="script.module.requests" version="2.3.0"/>
-    <import addon="script.module.beautifulsoup" version="2.1.31"/>
-    <import addon="script.module.unidecode" version="0.4.16"/>
-  </requires>
-  <extension point="xbmc.python.module" library="lib" />
-  <extension point="xbmc.addon.metadata">
-    <platform>all</platform>
-    <summary lang="en">Python Koding All In One</summary>
-    <description lang="en">Python Koding AIO contains a bunch of time saving modules that allows for quick and simple development.</description>
-    <disclaimer lang="en"></disclaimer>
-    <language></language>
-    <license>Creative Commons 4.0-NC-ND</license>
-    <forum>http:s//bugatsinho.github.io</forum>
-    <website>http://totalrevolution.tv</website>
-    <news>2.0 New version with the use of ResolveUrl</news>
-    <source>https://github.com/bugatsinho/python-koding/tree/master/script.module.python.koding.aio</source>
-  </extension>
+<addon id="script.module.python.koding.aio.alt" name="Python Koding AIO Alternate" version="1.1" provider-name="Total Revolution">
+    <requires>
+        <import addon="xbmc.python" version="2.25.0"/>
+        <import addon="script.module.resolveurl" />
+        <import addon="script.module.requests" />
+        <import addon="script.module.beautifulsoup" />
+        <import addon="script.module.unidecode" />
+    </requires>
+    <extension point="xbmc.python.module" library="lib" />
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary lang="en">Python Koding All In One</summary>
+        <description lang="en">Python Koding AIO contains a bunch of time saving modules that allows for quick and simple development. This is an alterrnate fork that uses ResolveURL instead of URL Resolver.</description>
+        <disclaimer lang="en"/>
+        <language/>
+        <license>Creative Commons 4.0-NC-ND</license>
+        <forum>http://totalrevolution.tv/forum</forum>
+        <website>http://totalrevolution.tv</website>
+        <news>1.0 Stable release</news>
+        <source>https://github.com/totalrevolution/python-koding/tree/master/script.module.python.koding.aio</source>
+    </extension>
 </addon>
 
 <addon id="script.module.resolveurl" name="ResolveURL" version="5.0.37" provider-name="jsergio">
