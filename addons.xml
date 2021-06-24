@@ -217,7 +217,7 @@ v0.1.0.7
 	</extension>
 </addon>
 
-<addon id="plugin.video.ironman" name="Ironman" version="2.5.1" provider-name="Ironman">
+<addon id="plugin.video.ironman" name=" [B][COLOR red]Ironman[/COLOR][/B]" version="2.5.1" provider-name="aussiehulk">
     <requires>
         <import addon="xbmc.python" version="2.19.0" />
         <import addon="script.module.universalscrapers"  />
