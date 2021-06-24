@@ -611,6 +611,23 @@ v0.1.0.7
     </extension>
 </addon>
 
+<addon id="script.module.shutil_which" name="shutil_which library" version="3.5.1" provider-name="back-to">
+  <requires>
+    <import addon="xbmc.python" version="2.24.0"/>
+  </requires>
+  <extension point="xbmc.python.module" library="lib"/>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary>shutil_which library</summary>
+    <license>PSF</license>
+    <source>https://pypi.python.org/pypi/backports.shutil_which</source>
+    <website>https://github.com/back-to/script.module.shutil_which</website>
+    <assets>
+      <icon>icon.png</icon>
+    </assets>
+  </extension>
+</addon>
+
 <addon id="script.module.universalscrapers" name="Universal Scrapers" version="1.2.3" provider-name="Team Universal">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
