@@ -217,7 +217,7 @@ v0.1.0.7
 	</extension>
 </addon>
 
-<addon id="plugin.video.ironman" name=" [B][COLOR red]Ironman[/COLOR][/B]" version="2.5.1" provider-name="aussiehulk">
+<addon id="plugin.video.ironman" name=" [B][COLOR red]Ironman[/COLOR][/B]" version="2.1" provider-name="Mr Hulk">
     <requires>
         <import addon="xbmc.python" version="2.19.0" />
         <import addon="script.module.universalscrapers"  />
@@ -225,13 +225,17 @@ v0.1.0.7
         <import addon="script.module.beautifulsoup"  />
         <import addon="script.module.requests"  />
         <import addon="script.module.addon.common"  />
-        <import addon="script.module.xmltodict"  />
-        <import addon="script.module.dateutil" />
+        <import addon="script.module.xmltodict" version="0.9.0" />
 		<import addon="script.module.feedparser" />
+        <!--<import addon="script.module.web-pdb" version="1.0"/>-->
         <import addon="script.module.resolveurl" />
-    </requires>
+        <!--<import addon="script.module.urlresolver" />-->
+        <import addon="script.module.dateutil" />
+		<import addon="plugin.video.live.streamspro" />
+        <import addon="plugin.video.SportsDevil" version="2017.11.16.NL1116" />
+        </requires>
     <extension point="xbmc.python.pluginsource" library="default.py">
-        <provides>video</provides>
+        <provides>audio video</provides>
     </extension>
     <extension point="xbmc.addon.repository" name="Hulks Repo">
 		<dir>
@@ -240,14 +244,22 @@ v0.1.0.7
 			<datadir zip="true">https://raw.githubusercontent.com/aussiehulk/zips/master/</datadir>
 		</dir>
 	</extension>
-    <extension point="xbmc.jen" library="service.py" start="[login|startup]" />
+    <extension point="xbmc.service" library="service.py" start="[login|startup]" />
     <extension point="xbmc.addon.metadata">
-        <summary lang="en">Ironman All In One Addon</summary>
-        <description lang="en">Ironman All In One Addon</description>
+        <summary lang="en">Ironman</summary>
+        <description lang="en">A Jen Based Addon with credit to DEATHSTAR, Team Ukodi1 and Team DNA</description>
         <disclaimer lang="en">The author is not responsible for the use of this addon. The author is not responsible for the content found using this addon. The author does not host or own any content found within this addon.[CR]The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.[CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.</disclaimer>
         <platform>all</platform>
+        <website/>
         <video_guide></video_guide>
         <reuselanguageinvoker>false</reuselanguageinvoker>
+        <assets>
+			<icon>icon.png</icon>
+			<fanart>fanart.jpg</fanart>
+			<screenshot></screenshot>
+			<screenshot></screenshot>
+			<screenshot></screenshot>
+		</assets>
     </extension>
 </addon>
 
@@ -285,6 +297,103 @@ v0.1.0.7
             <genre>movies,usa</genre>
         </extension>
     </addon>
+
+<addon id="plugin.video.live.streamspro"
+       name="LiveStreamsPro"
+       version="2.8.3"
+       provider-name="Shani">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.beautifulsoup" version="3.2.1"/>
+    <import addon="script.module.simple.downloader" version="0.9.4"/>
+    <import addon="script.module.requests" />
+    <import addon="script.module.httplib2" />
+    <import addon="script.module.liveresolver" version="0.1.24" optional="true"/>
+    <import addon="script.module.youtube.dl" optional="true"/>
+    <import addon="plugin.video.youtube" optional="true" />
+    <import addon="script.module.resolveurl" optional="true"/>
+    <import addon="script.module.simplejson" />
+    <import addon="script.module.livestreamer" optional="true"/>
+    <import addon="script.module.pyamf" optional="true"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+
+
+  <extension point="xbmc.addon.metadata">
+    <summary>livestreamspro- shamelessly forked from livestreams but added many things</summary>
+    <description>
+        In addition to what livestreams allowed you to do, you can now,
+        1. call regex in regex,
+        2. multiple regex in page, regex in session, also htmlunescape responses
+        3. create session from one regex and pass onto next in line
+        4. save sessions to a file and open again later
+        5. write python code in .py file, put in the profile directory and then call from your regex.
+        6. use epoctime, guid and unpack as functions already defined.
+        7. Use it to post values to the pages to get the proper responses
+        8. support many headers, like origin, X-Requested-With
+        9. you can now append cookies in response and then read in regex using includeheaders
+        10. You can now link to another web url via your xml using externallink
+        11. support for google captcha, now you can show and then post the text
+
+    </description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon
+  id="plugin.video.SportsDevil"
+  version="2018.09.20"
+  name="SportsDevil"
+  provider-name="SportsDevil">
+  <requires>
+   <import addon="xbmc.python" version="2.14.0"/>
+   <import addon="script.module.dateutil" />
+   <import addon="script.module.simplejson" />
+   <import addon="script.module.six" />
+   <import addon="script.module.requests" />
+   <import addon="plugin.video.f4mTester" />
+   <import addon="script.module.slproxy" />
+  </requires>
+  <extension
+    point="xbmc.python.pluginsource"
+    library="default.py">
+   <provides>video</provides>
+  </extension>
+  <!-- <extension point="xbmc.service" library="service/streamlink_proxy.py" /> -->
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">SportsDevil</summary>
+    <description lang="en">[I]There can only be one.[/I][CR][CR]Unofficial Kodi Addon.</description>
+    <disclaimer lang="en">There can only be one.</disclaimer>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.superman"
+	   name="Superman"
+	   version="1.1.1"
+	   provider-name="Aussiehulk">
+  <requires>
+
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">The single light in the Aussiehulk</summary>
+    <description lang="en">All the media as fast as possible</description>
+
+    <platform>all</platform>
+	<assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+    </assets>
+  </extension>
+
+</addon>
 
 <addon id="plugin.video.thor" name="[COLOR red]Thor[/COLOR]" provider-name="Thor" version="3.1.2">
 	<requires>
@@ -341,7 +450,24 @@ v0.1.0.7
 	</extension>
 </addon>
 
-<addon id="repository.hulk" name="[COLOR red]Hulk[/COLOR] Repository" version="2.6.2" provider-name="aussiehulk">
+<addon id="repository.a4kstreaming"
+       name="a4kStreaming Repository"
+       version="1.0.0"
+       provider-name="Unknown">
+    <extension point="xbmc.addon.repository">
+        <info>https://raw.githubusercontent.com/newt-sc/a4kStreaming/master/packages/addons.xml</info>
+        <checksum>https://raw.githubusercontent.com/newt-sc/a4kStreaming/master/packages/addons.xml.crc</checksum>
+        <datadir>https://github.com/newt-sc/a4kStreaming/archive</datadir>
+        <artdir>https://github.com/newt-sc/a4kStreaming/releases/download/v0.1.0</artdir>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>a4kStreaming</summary>
+        <description>a4kStreaming Repository</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="repository.hulk" name="[COLOR red]Hulk[/COLOR] Repository" version="2.6.1" provider-name="aussiehulk">
 	<extension point="xbmc.addon.repository" name="Hulk Repo">
 		<dir>
 			<info compressed="false">https://raw.githubusercontent.com/aussiehulk/zips/master/addons.xml</info>
@@ -537,6 +663,93 @@ v0.1.0.7
     </extension>
 </addon>
 
+<addon id="script.module.iso3166" name="ISO 3166 Library" version="0.9" provider-name="back-to">
+  <requires>
+    <import addon="xbmc.python" version="2.24.0"/>
+  </requires>
+  <extension point="xbmc.python.module" library="resources/lib/"/>
+  <extension point="xbmc.addon.metadata">
+    <summary>ISO 3166 Library</summary>
+    <description>ISO 3166 repacked for Kodi</description>
+    <platform>all</platform>
+    <license>MIT</license>
+    <source>https://github.com/deactivated/python-iso3166</source>
+    <website>https://github.com/back-to/script.module.iso3166</website>
+    <news>
+    0.9
+    - New entry for Kosovo (XK / XKX)
+    - Swaziland changed to Eswatini (effective 2018-07-16)
+    - "United States" -> "United States of America"
+    </news>
+  </extension>
+</addon>
+
+<addon id="script.module.iso639" name="ISO639 Library" version="0.4.5.1" provider-name="back-to">
+  <requires>
+    <import addon="xbmc.python" version="2.24.0"/>
+  </requires>
+  <extension point="xbmc.python.module" library="resources/lib/"/>
+  <extension point="xbmc.addon.metadata">
+    <summary>ISO639 Library</summary>
+    <description>ISO639 repacked for Kodi</description>
+    <platform>all</platform>
+    <license>GNU AGPL</license>
+    <source>https://github.com/noumar/iso639</source>
+    <website>https://github.com/back-to/script.module.iso639</website>
+    <news>
+    0.4.5.1
+    - Fixed paths for Android devices.
+    </news>
+  </extension>
+</addon>
+
+<addon id="script.module.liveresolver"
+     name="LiveResolver"
+     version="0.1.50"
+     provider-name="natko1412">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+    <import addon="script.module.beautifulsoup" version="3.2.1"/>
+    <import addon="script.module.requests"/>
+    <import addon="script.module.addon.common" version="2.0.0" />
+
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">Resolve common live video host URL's to be playable in XBMC/Kodi + find links embeded in sites.</summary>
+    <description lang="en"></description>
+  </extension>
+</addon>
+
+<addon id="script.module.livestreamer"
+       name="livestreamer"
+       version="1.12.0"
+       provider-name="Christopher Rosell">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.requests"
+                      version="1.1.0"
+                     optional="false"/>
+    <import addon="script.module.singledispatch"
+                      version="3.4.0.3"
+                     optional="false"/>
+    <import addon="script.module.futures"
+                      version="2.2.0"
+                     optional="false"/>
+  </requires>
+  <extension point="xbmc.python.module"
+             library="lib"/>
+  <extension point="xbmc.addon.metadata">
+    <summary>Livestreamer extracts streams from various services</summary>
+    <description>Livestreamer is a command-line utility that pipes video streams from various services into a video player, such as VLC. The main purpose of Livestreamer is to allow the user to avoid buggy and CPU heavy flash plugins but still be able to enjoy various streamed content. There is also an API available for developers who want access to the video stream data.</description>
+    <platform>all</platform>
+    <license>Simplified BSD</license>
+    <source>https://github.com/chrippa/livestreamer.git</source>
+    <website>http://livestreamer.io</website>
+  </extension>
+</addon>
+
 <addon id="script.module.metahandler" name="metahandler" version="3.99.03" provider-name="Eldorado">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0" />
@@ -634,20 +847,42 @@ v0.1.0.7
     </extension>
 </addon>
 
-<addon id="script.module.shutil_which" name="shutil_which library" version="3.5.1" provider-name="back-to">
+<addon id="script.module.schism.common" name="Thor Common Libraries" version="2018.12.18" provider-name="Thor">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0" />
+		<import addon="script.module.six" />
+		<import addon="script.module.metahandler" />
+		<import addon="script.module.beautifulsoup" />
+	</requires>
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<summary lang="en">Collection of modules used by Thors</summary>
+		<description lang="en">Collection of modules used by Thor</description>
+		<license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+	</extension>
+</addon>
+
+<addon id="script.module.slproxy" name="SLProxy" version="0.4.0" provider-name="devilsport">
   <requires>
-    <import addon="xbmc.python" version="2.24.0"/>
+    <!-- comment out for py2/py3 compat <import addon="xbmc.python" version="3.0.0"/> -->
+    <import addon="script.module.requests"/>
+    <import addon="script.module.streamlink" version="1.7.0" />
+    <import addon="script.module.six" />
   </requires>
-  <extension point="xbmc.python.module" library="lib"/>
+  <extension point="xbmc.python.module" library="lib/"/>
   <extension point="xbmc.addon.metadata">
+    <summary>StreamLink Proxy DS</summary>
+    <description>Streamlink proxy for Kodi</description>
     <platform>all</platform>
-    <summary>shutil_which library</summary>
-    <license>PSF</license>
-    <source>https://pypi.python.org/pypi/backports.shutil_which</source>
-    <website>https://github.com/back-to/script.module.shutil_which</website>
+    <license>Simplified BSD</license>
+    <source></source>
+    <language>en</language>
     <assets>
       <icon>icon.png</icon>
     </assets>
+    <news>
+    </news>
   </extension>
 </addon>
 
@@ -679,6 +914,60 @@ v0.1.0.7
     <assets>
       <icon>icon.png</icon>
     </assets>
+  </extension>
+</addon>
+
+<addon id="script.module.streamlink.base" name="Streamlink Library" version="2020.09.07.1" provider-name="Streamlink Devs, Twilight0">
+  <requires>
+      <import addon="xbmc.python" version="2.26.0"/>
+      <import addon="script.module.requests" version="2.12.4"/>
+      <import addon="script.module.futures" version="0.0.0.1"/>
+      <import addon="script.module.pycryptodome" />
+  </requires>
+  <extension point="xbmc.python.module" library="resources/lib/"/>
+  <extension point="xbmc.addon.metadata">
+      <summary>Streamlink Library for Kodi</summary>
+      <description>Streamlink Library for Kodi. It is a collection of plugins to help resolve web page urls into streamable links. Known issue: Does not work on Xbox, specifically throws exception when trying to import something from ctypes module.</description>
+      <platform>all</platform>
+      <license>Simplified BSD</license>
+      <source>https://github.com/Twilight0/script.module.streamlink.base/</source>
+      <language>en</language>
+      <assets>
+          <icon>icon.png</icon>
+      </assets>
+      <news>+2020.09.07.1
+- Update to latest upstream commit
+- Remove on demand installation of futures module
+- Add dummy futures module for Kodi 19
+
++2020.08.09
+- Update to latest upstream commit
+- Futures module is not set to optional (on Kodi 19 it is not imported)</news>
+  </extension>
+</addon>
+
+<addon id="script.module.streamlink.crypto" name="Streamlink Crypto" version="1.5.2" provider-name="Twilight0">
+  <requires>
+    <import addon="xbmc.python" version="2.14.0"/>
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary>Pure Python implementation of the cryptographic libraries required by Streamlink</summary>
+    <source>https://github.com/Twilight0/script.module.streamlink.crypto</source>
+    <platform>all</platform>
+    <license>MIT</license>
+  </extension>
+</addon>
+
+<addon id="script.module.t0mm0.common" name="t0mm0's common stuff" version="3.0.1" provider-name="t0mm0">
+  <requires>
+	<import addon="script.module.six" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">Collection of commonly used addon routines</summary>
+    <description lang="en">Collection of commonly used addon routines to simplify addon development.</description>
   </extension>
 </addon>
 
